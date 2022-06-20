@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<workload name="s3-write" description="sample write benchmark for s3">
+
+  <storage type="s3" config="accesskey=accesskeyValue;secretkey=secretkeyValue;endpoint=endpointValue" />
+
+  <workflow>
+
+    <workstage name="init">
+      <work type="init" workers="1" config="cprefix=bucketName;containers=r(1,1)" />
+    </workstage>
+
+    <workstage name="main">
+      <work name="main" workers="workersValue" runtime="runtimeValue">
+        <operation type="write" ratio="100" config="cprefix=bucketName;containers=u(1,1);objects=u(1,bucketObjectNum);sizes=c(32)KB" />
+      </work>
+    </workstage>
+
+  </workflow>
+
+</workload>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<workload name="s3-cleanup" description="sample cleanup benchmark for s3">
+
+  <storage type="s3" config="accesskey=accesskeyValue;secretkey=secretkeyValue;endpoint=endpointValue" />
+
+  <workflow>
+
+    <workstage name="cleanup">
+      <work type="cleanup" workers="workersValue" config="cprefix=bucketName;containers=r(1,1);objects=r(1,bucketObjectNum)" />
+    </workstage>
+
+    <workstage name="dispose">
+      <work type="dispose" workers="1" config="cprefix=bucketName;containers=r(1,1)" />
+    </workstage>
+
+  </workflow>
+
+</workload>
